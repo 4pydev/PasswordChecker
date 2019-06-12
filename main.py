@@ -1,3 +1,6 @@
+import urwid
+
+
 def is_very_long(password):
     return True if len(password)>12 else False
 
@@ -62,9 +65,17 @@ def get_score(password):
 
 
 def main():
-    password = input('Enter a password: ')
 
-    print('Password rating: {} of 14'.format(get_score(password)))
+    def on_ask_change(edit, new_edit_text):
+        reply.set_text('Password rating: %s of 14' % (get_score(new_edit_text)))
+
+
+    ask = urwid.Edit('Enter a password: ')
+    reply = urwid.Text("")
+    menu = urwid.Pile([ask, reply])
+    menu = urwid.Filler(menu, valign='top')
+    urwid.connect_signal(ask, 'change', on_ask_change)
+    urwid.MainLoop(menu).run()
 
 
 if __name__ == '__main__':
