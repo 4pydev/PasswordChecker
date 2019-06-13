@@ -2,49 +2,33 @@ import urwid
 
 
 def is_very_long(password):
-    return True if len(password)>12 else False
+    return len(password)>12
 
 
 def has_digits(password):
-    for char in password:
-        if char.isdigit():
-            return True
-    return False
+    return any(char.isdigit() for char in password)
 
 
 def has_letters(password):
-    for char in password:
-        if char.isalpha():
-            return True
-    return False
+    return any(char.isalpha() for char in password)
 
 
 def has_upper_letters(password):
-    for char in password:
-        if char.isupper():
-            return True
-    return False
+    return any(char.isupper() for char in password)
 
 
 def has_lower_letters(password):
-    for char in password:
-        if char.islower():
-            return True
-    return False
+    return any(char.islower() for char in password)
 
 
 def has_symbol(password):
-    for char in password:
-        if not char.isdigit() and not char.isalpha():
-            return True
-    return False
+    return any(
+        (not char.isdigit() and not char.isalpha()) for char in password
+    )
 
 
 def has_not_only_symbols(password):
-    for char in password:
-        if not has_symbol(char):
-            return True
-    return False
+    return any(has_symbol(char) for char in password)
 
 
 def get_score(password):
