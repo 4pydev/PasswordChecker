@@ -19,4 +19,4 @@ Password rating: 10 of 14
 ```
 
 # Project goals
-The code is written for educational purposes. Training course for web-developers - DEVMAN.org
+The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org/)
